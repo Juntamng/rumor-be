@@ -9,5 +9,6 @@ PEXELS_KEY=<key>
 ```
 ## To start the node server 
 ```
+npm install
 npm start
 ```
