@@ -27,13 +27,19 @@ const pexelsKey = process.env.PEXELS_KEY || "";
 //   }
 // }
 app.use(express.json());
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = ['*'];
 const options = {
     origin: allowedOrigins
 };
 app.use(cors(options));
 app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
+    res.setHeader('Access-Control-Allow-Credentials', "true");
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    // another common pattern
+    // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+    res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
     const client = new Client({ apiKey: pexelsKey });
     const page = (req.query.page) ? parseInt(req.query.page) : 1;
     const query = (req.query.query) ? req.query.query : "";
