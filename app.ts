@@ -51,8 +51,13 @@ app.get('/', async (req: Request, res: Response) => {
   const client = new Client({ apiKey: pexelsKey })
 
   const page:number = (req.query.page) ? parseInt(req.query.page as string) : 1
-  const query:string = req.query.query as string
+  const query:string = (req.query.query) ? req.query.query as string : ""
   // const pageSize:number = 9
+
+  if (query.trim().length === 0) {
+    res.json([])  
+    return
+  }
 
   const arr:record[] = []
   const result = await client.v1.photos.search(query, { perPage: 4, page: page })

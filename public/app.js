@@ -36,8 +36,12 @@ app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     const client = new Client({ apiKey: pexelsKey });
     const page = (req.query.page) ? parseInt(req.query.page) : 1;
-    const query = req.query.query;
+    const query = (req.query.query) ? req.query.query : "";
     // const pageSize:number = 9
+    if (query.trim().length === 0) {
+        res.json([]);
+        return;
+    }
     const arr = [];
     const result = yield client.v1.photos.search(query, { perPage: 4, page: page });
     result.photos.forEach((item) => {
