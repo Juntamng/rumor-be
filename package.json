@@ -9,8 +9,8 @@
   },
   "scripts": {
     "build": "npx tsc",
-    "start": "node public/app.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q public/app.js\""
+    "start": "node api/app.js",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q api/app.js\""
   },
   "keywords": [],
   "author": "",
