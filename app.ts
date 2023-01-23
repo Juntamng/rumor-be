@@ -40,7 +40,7 @@ interface itemData {
 
 app.use(express.json());
 
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = ['http://localhost:3000', "https://rumor-fe.vercel.app"];
 const options: cors.CorsOptions = {
   origin: allowedOrigins
 };
